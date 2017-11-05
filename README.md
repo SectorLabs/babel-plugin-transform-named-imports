@@ -62,3 +62,8 @@ This plugin attempts to rewrite your imports to always import from the file in w
 4. **Does it transform CommonJS imports?**
 
     No.
+
+## Thanks
+Thanks to the author of [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) for the initial idea of rewriting the imports.
+
+The major difference with `babel-plugin-transform-imports` is that it requires defining every module you want rewritten. This plugin goes a step further and rewrites all your imports.
