@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`aliased named import 1`] = `
+"
+import { myFunc as myAliasFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { myFunc as myAliasFunc } from 'testmodule';
+"
+`;
+
+exports[`default import 1`] = `
+"
+import myFunc from 'testmodule/myFunc'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from 'testmodule/myFunc';
+"
+`;
+
+exports[`default import with multiple named import 1`] = `
+"
+import init, { myFunc, myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from './tests/testmodule/myFunc.js';
+import { myOtherFunc } from './tests/testmodule/myOtherFunc.js';
+"
+`;
+
+exports[`multiple named imports 1`] = `
+"
+import { myFunc, myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from './tests/testmodule/myFunc.js';
+import { myOtherFunc } from './tests/testmodule/myOtherFunc.js';
+"
+`;
+
+exports[`nested named import 1`] = `
+"
+import { myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { myOtherFunc } from './tests/testmodule/myOtherFunc.js';
+"
+`;
+
+exports[`single named import 1`] = `
+"
+import { myFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from './tests/testmodule/myFunc.js';
+"
+`;

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const ospath = require('path');
 
 const Babylon = require('babylon');
 const types = require('babel-types');
@@ -36,13 +37,16 @@ const visitor = (path, state) => {
         // found it, replace our import with a new one that imports
         // straight from the place where it was exported....
 
+        const relativePath = './' + ospath.relative(
+            ospath.dirname(sourcePath), exportedSpecifier.path);
+
         switch (exportedSpecifier.type) {
         case 'default':
             transforms.push(types.importDeclaration(
                 [types.importDefaultSpecifier(
                     types.identifier(specifier.name)
                 )],
-                types.stringLiteral(exportedSpecifier.path),
+                types.stringLiteral(relativePath),
             ));
             break;
 
@@ -52,7 +56,7 @@ const visitor = (path, state) => {
                     types.identifier(specifier.name),
                     types.identifier(exportedSpecifier.name),
                 )],
-                types.stringLiteral(exportedSpecifier.path),
+                types.stringLiteral(relativePath),
             ));
             break;
         }
@@ -64,6 +68,7 @@ const visitor = (path, state) => {
 };
 
 module.exports = {
+    name: 'transform-named-exports',
     visitor: {
         ImportDeclaration: visitor,
     },

@@ -1,6 +1,6 @@
 {
   "name": "@sector-labs/babel-plugin-transform-named-imports",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Transforms named imports into (default) full path imports.",
   "main": "src/index.js",
   "repository": {
@@ -18,9 +18,13 @@
     "url": "https://github.com/SectorLabs/babel-plugin-transform-named-import/issues"
   },
   "homepage": "https://github.com/SectorLabs/babel-plugin-transform-named-import#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-plugin-tester": "^4.0.0",
+    "babylon-options": "^1.1.2",
+    "jest": "^21.2.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "babel",
