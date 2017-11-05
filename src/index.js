@@ -21,7 +21,27 @@ const visitor = (path, state) => {
 
     const transforms = [];
 
+    // leave single, default imports alone
+    if (specifiers.length === 1 && specifiers[0].type === 'default') {
+        return;
+    }
+
     specifiers.forEach((specifier) => {
+        // default imports can usually not be further resolved,
+        // bail out and leave it as is.. we do have to do a transform
+        // because the same import line might also contain named imports
+        // that get split over multiple lines
+        if (specifier.type === 'default') {
+            transforms.push(types.importDeclaration(
+                [types.importDefaultSpecifier(
+                    types.identifier(specifier.name)
+                )],
+                types.stringLiteral(sourcePath),
+            ));
+
+            return;
+        }
+
         // attempt to parse the file that is being imported
         const ast = AST.parseFrom(specifier.path, resolver);
         if (!ast) {
@@ -29,7 +49,9 @@ const visitor = (path, state) => {
         }
 
         // attempt to find an export that matches our import
-        const exportedSpecifier = ast.importSpecifiers().find(spec => spec.name === specifier.name);
+        const exportedSpecifier = ast.importSpecifiers()
+            .find(spec => spec.name === specifier.importedName);
+
         if (!exportedSpecifier) {
             return;
         }

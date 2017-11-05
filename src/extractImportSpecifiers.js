@@ -11,6 +11,7 @@ module.exports = (declarations, resolve) => {
                     ? 'default' : 'named',
                 path: importPath,
                 name: specifier.local.name,
+                importedName: (specifier.imported || specifier.local).name,
             });
         });
     });

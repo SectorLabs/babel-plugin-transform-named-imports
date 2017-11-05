@@ -39,7 +39,6 @@ pluginTester({
 
         // convert this into a default import with `myAliasFunc` leading to
         // `testmodule/myFunc`
-        // BROKEN
         'aliased named import':
             `import { myFunc as myAliasFunc } from 'testmodule'`,
 

@@ -6,7 +6,7 @@ import { myFunc as myAliasFunc } from 'testmodule'
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import { myFunc as myAliasFunc } from 'testmodule';
+import myAliasFunc from './tests/testmodule/myFunc.js';
 "
 `;
 
@@ -26,6 +26,7 @@ import init, { myFunc, myOtherFunc } from 'testmodule'
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
+import init from 'currentFile.js';
 import myFunc from './tests/testmodule/myFunc.js';
 import { myOtherFunc } from './tests/testmodule/myOtherFunc.js';
 "
