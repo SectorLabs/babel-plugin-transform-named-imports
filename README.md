@@ -1,7 +1,7 @@
 # babel-plugin-transform-named-imports
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
-[![npm version](https://badge.fury.io/js/%40sector-labs%2Fbabel-plugin-transform-named-imports.svg)](https://badge.fury.io/js/%40sector-labs%2Fbabel-plugin-transform-named-imports)
+[![npm version](https://badge.fury.io/js/babel-plugin-transform-named-imports.svg)](https://badge.fury.io/js/babel-plugin-transform-named-imports)
 [![Build Status](https://scrutinizer-ci.com/g/SectorLabs/babel-plugin-transform-named-imports/badges/build.png?b=master)](https://scrutinizer-ci.com/g/SectorLabs/babel-plugin-transform-named-imports/build-status/master)
 [![Code Coverage](https://scrutinizer-ci.com/g/SectorLabs/babel-plugin-transform-named-imports/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/SectorLabs/babel-plugin-transform-named-imports/?branch=master)
 
