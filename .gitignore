@@ -1,2 +1,5 @@
 # Ignore node_modules
 node_modules/
+
+# Ingore coverage results
+coverage/
