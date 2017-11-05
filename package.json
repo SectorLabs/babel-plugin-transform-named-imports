@@ -1,6 +1,6 @@
 {
-  "name": "@sector-labs/babel-plugin-transform-named-imports",
-  "version": "0.0.2",
+  "name": "babel-plugin-transform-named-imports",
+  "version": "0.0.1",
   "description": "Transforms named imports into (default) full path imports.",
   "main": "src/index.js",
   "repository": {
