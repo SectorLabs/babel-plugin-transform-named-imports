@@ -1,5 +1,7 @@
 # babel-plugin-transform-named-imports
 
+[![npm version](https://badge.fury.io/js/%40sector-labs%2Fbabel-plugin-transform-named-imports.svg)](https://badge.fury.io/js/%40sector-labs%2Fbabel-plugin-transform-named-imports)
+
 This plugin attempts to transform named ES6 imports to default imports:
 
     // from this

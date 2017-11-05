@@ -1,14 +1,33 @@
 {
-  "name": "babel-plugin-transform-named-imports",
+  "name": "@sector-labs/babel-plugin-transform-named-imports",
   "version": "0.0.1",
   "description": "Transforms named imports into (default) full path imports.",
   "main": "src/index.js",
-  "repository": "https://github.com/SectorLabs/babel-plugin-transform-named-import",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SectorLabs/babel-plugin-transform-named-import.git"
+  },
   "author": "Swen Kooij <swen@sectorlabs.ro>",
   "license": "MIT",
   "dependencies": {
     "babel-types": "^6.26.0",
     "babylon": "^6.18.0",
     "eslint-import-resolver-webpack": "^0.8.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/SectorLabs/babel-plugin-transform-named-import/issues"
+  },
+  "homepage": "https://github.com/SectorLabs/babel-plugin-transform-named-import#readme",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "babel",
+    "plugin",
+    "transform",
+    "named",
+    "imports",
+    "webpack"
+  ]
 }
