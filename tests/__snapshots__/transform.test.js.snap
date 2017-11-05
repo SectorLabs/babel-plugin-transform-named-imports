@@ -10,6 +10,26 @@ import myAliasFunc from './tests/testmodule/myFunc.js';
 "
 `;
 
+exports[`common js default import 1`] = `
+"
+import React from './commonjsmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from './commonjsmodule';
+"
+`;
+
+exports[`common js default with named import 1`] = `
+"
+import React, { Component } from './commonjsmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React, { Component } from './commonjsmodule';
+"
+`;
+
 exports[`default import 1`] = `
 "
 import myFunc from 'testmodule/myFunc'
@@ -26,7 +46,7 @@ import init, { myFunc, myOtherFunc } from 'testmodule'
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-import init from 'currentFile.js';
+import init from './tests/testmodule/index.js';
 import myFunc from './tests/testmodule/myFunc.js';
 import { myOtherFunc } from './tests/testmodule/myOtherFunc.js';
 "
@@ -60,5 +80,25 @@ import { myFunc } from 'testmodule'
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import myFunc from './tests/testmodule/myFunc.js';
+"
+`;
+
+exports[`unresolved default import 1`] = `
+"
+import React from 'reacty'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'reacty';
+"
+`;
+
+exports[`unresolved default import with named import 1`] = `
+"
+import React, { Component } from 'reacty'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React, { Component } from 'reacty';
 "
 `;

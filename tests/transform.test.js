@@ -45,5 +45,21 @@ pluginTester({
         // don't change existing default imports like this
         'default import':
             `import myFunc from 'testmodule/myFunc'`,
+
+        // unresolved default imports should be left alone
+        'unresolved default import':
+            `import React from 'reacty'`,
+
+        // unresolved imports should be left alone
+        'unresolved default import with named import':
+            `import React, { Component } from 'reacty'`,
+
+        // common js imports should be left alone
+        'common js default import':
+            `import React from './commonjsmodule'`,
+
+        // common js imports should be left alone
+        'common js default with named import':
+            `import React, { Component } from './commonjsmodule'`,
     },
 });

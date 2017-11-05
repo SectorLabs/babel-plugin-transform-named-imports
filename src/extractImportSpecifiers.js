@@ -12,6 +12,7 @@ module.exports = (declarations, resolve) => {
                 path: importPath,
                 name: specifier.local.name,
                 importedName: (specifier.imported || specifier.local).name,
+                originalPath: importNode.source.value,
             });
         });
     });
