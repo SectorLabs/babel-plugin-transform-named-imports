@@ -2,7 +2,7 @@
   "name": "babel-plugin-transform-named-imports",
   "version": "0.0.1",
   "description": "Transforms named imports into (default) full path imports.",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "https://github.com/SectorLabs/babel-plugin-transform-named-import",
   "author": "Swen Kooij <swen@sectorlabs.ro>",
   "license": "MIT",
