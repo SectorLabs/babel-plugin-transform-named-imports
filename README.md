@@ -68,6 +68,10 @@ This plugin attempts to rewrite your imports to always import from the file in w
 
     No.
 
+5. **Is it safe to run on any code base?**
+
+    There could be side-effects. If you're relying on a `index.js` being imported and executed, then this might screw that behavior. It could also be that there are third-party packages which this does not play nice with. If you have a reasonably clean code base that doesn't do anything out of the ordinay and doesn't pass `node_modules` through Babel, then this plugin will most likely work for you.
+
 ## Thanks
 Thanks to the author of [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) for the initial idea of rewriting the imports.
 
