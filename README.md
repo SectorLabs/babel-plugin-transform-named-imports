@@ -13,6 +13,8 @@ This plugin attempts to transform named ES6 imports to default imports:
     // to this
     import myFunc from 'node_modules/mymodule/myFunc';
 
+The former causes `mymodule/index.js` to be imported, and therefor all other classes and methods to be imported as well. By transforming the import, tree shaking is far more effective and you can be assured that code that you're not using does not end up in your bundle.
+
 ## Why?
 When you use a named export, Webpack actually pulls in the entire module. It should tree shake the things you don't actually use, leaving you with only what you actually use.
 
@@ -71,6 +73,10 @@ This plugin attempts to rewrite your imports to always import from the file in w
 5. **Is it safe to run on any code base?**
 
     There could be side-effects. If you're relying on a `index.js` being imported and executed, then this might screw that behavior. It could also be that there are third-party packages which this does not play nice with. If you have a reasonably clean code base that doesn't do anything out of the ordinay and doesn't pass `node_modules` through Babel, then this plugin will most likely work for you.
+
+6. **By how much will it decrease my bundle size?**
+
+    This highly depends on how large the modules are you are importing from and how much of it you actually use. The improvements are more visible in code bases that split their bundle into chunks or have multiple endpoints.
 
 ## Thanks
 Thanks to the author of [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) for the initial idea of rewriting the imports.
