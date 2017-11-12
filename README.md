@@ -16,7 +16,7 @@ This plugin attempts to transform named ES6 imports to default imports:
 The former causes `mymodule/index.js` to be imported, and therefor all other classes and methods to be imported as well. By transforming the import, tree shaking is far more effective and you can be assured that code that you're not using does not end up in your bundle.
 
 ## Warning
-This plugin aggressively transforms all imports thay pass to Babel. If you have any `index.js` files that have side effects, i.e code that executes on import, do not use this plugin. That code will never make it into your bundle with this plugin. To be on the safe side, do not run your `node_modules` through Babel. It might cause problems will libraries that rely on the behavior described above.
+This plugin aggressively transforms all imports thay pass to Babel. If you have any `index.js` files that have side effects, i.e code that executes on import, do not use this plugin. That code will never make it into your bundle with this plugin. To be on the safe side, do not run your `node_modules` through Babel. It might cause problems with libraries that rely on the behavior described above.
 
 This is not a silver bullet. If your code does not rely on side effects, then you can expect this plugin to work well. If you do have code with side effects, then we strongly recommend that you do not use this plugin.
 
