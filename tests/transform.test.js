@@ -61,5 +61,9 @@ pluginTester({
         // common js imports should be left alone
         'common js default with named import':
             `import React, { Component } from './commonjsmodule'`,
+
+        // convert this into a namespace import that leads to `testmodule/constants`
+        'aliased namespace import':
+            `import { thangs } from 'testmodule'`,
     },
 });

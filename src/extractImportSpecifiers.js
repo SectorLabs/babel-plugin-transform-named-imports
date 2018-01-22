@@ -1,3 +1,14 @@
+function getSimpleType(type) {
+    switch (type) {
+    case 'ImportDefaultSpecifier':
+        return 'default';
+    case 'ImportNamespaceSpecifier':
+        return 'namespace';
+    default:
+        return 'named';
+    }
+}
+
 module.exports = (declarations, resolve) => {
     const imports = [];
 
@@ -7,8 +18,7 @@ module.exports = (declarations, resolve) => {
 
         specifiers.forEach(specifier => {
             imports.push({
-                type: specifier.type === 'ImportDefaultSpecifier'
-                    ? 'default' : 'named',
+                type: getSimpleType(specifier.type),
                 path: importPath,
                 name: specifier.local.name,
                 importedName: (specifier.imported || specifier.local).name,

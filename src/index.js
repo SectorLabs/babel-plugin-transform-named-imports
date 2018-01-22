@@ -88,9 +88,10 @@ const visitor = (path, state) => {
             if (!pointer) {
                 // perhaps there was a re-export, check the export specifiers
                 pointer = ast.exportSpecifiers().find(exp => exp.exportedName === name);
-                debug('FOUND IT!', pointer);
 
                 if (pointer) {
+                    debug('FOUND IT!', pointer);
+
                     // it was re-exported! find the matching local import
                     pointer = ast.importSpecifiers().find(imp => imp.name === pointer.name);
 
@@ -109,8 +110,10 @@ const visitor = (path, state) => {
                     }
                 }
 
-                if (!pointer) {
+                if (!pointer && !exportedSpecifier) {
                     return;
+                } else if (exportedSpecifier) {
+                    break;
                 } else {
                     exportedSpecifier = pointer;
                     break;
@@ -130,6 +133,15 @@ const visitor = (path, state) => {
         case 'default':
             transforms.push(types.importDeclaration(
                 [types.importDefaultSpecifier(
+                    types.identifier(specifier.name)
+                )],
+                types.stringLiteral(makeImportPath(exportedSpecifier)),
+            ));
+            break;
+
+        case 'namespace':
+            transforms.push(types.importDeclaration(
+                [types.importNamespaceSpecifier(
                     types.identifier(specifier.name)
                 )],
                 types.stringLiteral(makeImportPath(exportedSpecifier)),
