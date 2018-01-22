@@ -3,9 +3,9 @@ module.exports = (declarations, resolve) => {
 
     declarations.forEach(importNode => {
         const importPath = resolve(importNode.source.value);
-        const specifiers = importNode.specifiers;
+        const specifiers = importNode.specifiers || [];
 
-        importNode.specifiers.forEach(specifier => {
+        specifiers.forEach(specifier => {
             imports.push({
                 type: specifier.type === 'ImportDefaultSpecifier'
                     ? 'default' : 'named',

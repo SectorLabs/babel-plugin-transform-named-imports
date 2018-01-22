@@ -1,3 +1,4 @@
+const debug = require('debug')('transform-named-imports');
 const fs = require('fs');
 const ospath = require('path');
 
@@ -61,19 +62,66 @@ const visitor = (path, state) => {
             continue;
         }
 
-        // attempt to parse the file that is being imported
-        const ast = AST.parseFrom(specifier.path, resolver);
-        if (!ast) {
-            return;
-        }
+        let exportedSpecifier;
+        let pointer;
+        let iteration = 0;
+        let path = specifier.path;
+        let name = specifier.importedName;
 
-        // attempt to find an export that matches our import
-        const exportedSpecifier = ast.importSpecifiers()
-            .find(spec => spec.name === specifier.importedName);
+        do {
+            iteration += 1;
 
-        if (!exportedSpecifier) {
-            return;
-        }
+            // attempt to parse the file that is being imported
+            const ast = AST.parseFrom(path, resolver);
+            if (!ast) {
+                return;
+            }
+
+            // attempt to find an export that matches our import
+            debug('ITERATION', iteration);
+            debug('LOOKING FOR', name);
+            debug('IMPORTS', ast.importSpecifiers());
+            debug('EXPORTS', ast.exportSpecifiers());
+
+            pointer = ast.importSpecifiers().find(imp => imp.name === name);
+
+            if (!pointer) {
+                // perhaps there was a re-export, check the export specifiers
+                pointer = ast.exportSpecifiers().find(exp => exp.exportedName === name);
+                debug('FOUND IT!', pointer);
+
+                if (pointer) {
+                    // it was re-exported! find the matching local import
+                    pointer = ast.importSpecifiers().find(imp => imp.name === pointer.name);
+
+                    if (pointer) {
+                        path = pointer.path;
+                        name = pointer.importedName;
+
+                        debug('FOUND THE RE-EXPORT!', pointer);
+
+                        exportedSpecifier = pointer;
+                        continue;
+                    } else if (exportedSpecifier) {
+                        // no matching import, we're at the bottom of the chain
+                        debug('NO MORE IMPORTS, USE THE PREVIOUS RESULT');
+                        break;
+                    }
+                }
+
+                if (!pointer) {
+                    return;
+                } else {
+                    exportedSpecifier = pointer;
+                    break;
+                }
+            } else {
+                exportedSpecifier = pointer;
+                break;
+            }
+        } while (path);
+
+        debug('GOING WITH', exportedSpecifier);
 
         // found it, replace our import with a new one that imports
         // straight from the place where it was exported....

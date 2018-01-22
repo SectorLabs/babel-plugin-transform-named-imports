@@ -12,6 +12,7 @@
   "dependencies": {
     "babel-types": "^6.26.0",
     "babylon": "^6.18.0",
+    "debug": "^3.1.0",
     "eslint-import-resolver-webpack": "^0.8.3"
   },
   "bugs": {

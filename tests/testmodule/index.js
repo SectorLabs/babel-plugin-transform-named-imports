@@ -1,9 +1,9 @@
 import myFunc from './myFunc';
-import { myOtherFunc } from './myOtherFunc';
+import { myOtherOtherFunc } from './reexport';
 
 export {
     myFunc,
-    myOtherFunc,
+    myOtherOtherFunc as myOtherFunc,
 };
 
 export default () => console.log('default export');

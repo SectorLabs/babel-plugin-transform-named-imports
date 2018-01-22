@@ -3,6 +3,7 @@ const fs = require('fs');
 const Babylon = require('babylon');
 
 const Resolver = require('./resolver');
+const extractExportSpecifiers = require('./extractExportSpecifiers');
 const extractImportSpecifiers = require('./extractImportSpecifiers');
 
 /**
@@ -86,6 +87,16 @@ class AST {
             .filter(node => node.type === 'ImportDeclaration');
 
         return extractImportSpecifiers(declarations, this.resolve.bind(this));
+    }
+
+    /**
+     * Gets a flat list of all the export specifiers in this file.
+     */
+    exportSpecifiers() {
+        const declarations = this.ast.program.body
+            .filter(node => node.type === 'ExportDefaultDeclaration' || node.type === 'ExportNamedDeclaration');
+
+        return extractExportSpecifiers(declarations, this.resolve.bind(this));
     }
 }
 
