@@ -62,6 +62,16 @@ import { myOtherFunc } from './tests/testmodule/myOtherFunc.js';
 "
 `;
 
+exports[`glob import 1`] = `
+"
+import * as testmodule from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as testmodule from 'testmodule';
+"
+`;
+
 exports[`multiple named imports 1`] = `
 "
 import { myFunc, myOtherFunc } from 'testmodule'

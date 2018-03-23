@@ -65,5 +65,9 @@ pluginTester({
         // convert this into a namespace import that leads to `testmodule/constants`
         'aliased namespace import':
             `import { thangs } from 'testmodule'`,
+
+        // leaves glob imports alone
+        'glob import':
+            `import * as testmodule from 'testmodule'`,
     },
 });
