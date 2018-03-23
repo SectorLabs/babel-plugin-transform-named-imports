@@ -105,9 +105,9 @@ const visitor = (path, state) => {
     }
 };
 
-module.exports = {
-    name: 'transform-named-exports',
+module.exports = () => ({
+    name: 'transform-named-imports',
     visitor: {
         ImportDeclaration: visitor,
     },
-};
+});

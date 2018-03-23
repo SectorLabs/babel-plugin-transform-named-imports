@@ -12,7 +12,7 @@ const babelOptions = {
 };
 
 pluginTester({
-    plugin: () => plugin,
+    plugin,
     babelOptions: babelOptions,
     pluginOptions: {
         webpackConfig: path.resolve(__dirname + '/webpack.config.js'),
