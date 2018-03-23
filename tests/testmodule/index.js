@@ -1,9 +1,11 @@
 import myFunc from './myFunc';
-import { myOtherFunc } from './myOtherFunc';
+import { myOtherOtherFunc } from './reexport';
+import * as things from './constants';
 
 export {
     myFunc,
-    myOtherFunc,
+    myOtherOtherFunc as myOtherFunc,
+    things as thangs,
 };
 
 export default () => console.log('default export');

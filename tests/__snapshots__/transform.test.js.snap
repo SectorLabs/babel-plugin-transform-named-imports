@@ -10,6 +10,16 @@ import myAliasFunc from './tests/testmodule/myFunc.js';
 "
 `;
 
+exports[`aliased namespace import 1`] = `
+"
+import { thangs } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as thangs from './tests/testmodule/constants.js';
+"
+`;
+
 exports[`common js default import 1`] = `
 "
 import React from './commonjsmodule'

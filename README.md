@@ -83,6 +83,13 @@ This plugin attempts to rewrite your imports to always import from the file in w
 
     This highly depends on how large the modules are you are importing from and how much of it you actually use. The improvements are more visible in code bases that split their bundle into chunks or have multiple endpoints.
 
+## Debugging
+Some more detailed logging is available when using the DEBUG environment variable:
+
+```sh
+DEBUG=transform-named-imports some-command-that-runs-transpilation
+```
+
 ## Thanks
 Thanks to the author of [babel-plugin-transform-imports](https://www.npmjs.com/package/babel-plugin-transform-imports) for the initial idea of rewriting the imports.
 
