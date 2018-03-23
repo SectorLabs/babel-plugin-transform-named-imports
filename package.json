@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-named-imports",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Transforms named imports into (default) full path imports.",
   "main": "src/index.js",
   "repository": {
