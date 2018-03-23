@@ -13,6 +13,7 @@ class Resolver {
      * case the specified configuration file is a multi-config file.
      */
     constructor(webpackConfig, webpackConfigIndex = 0) {
+        this.cache = {};
         this.webpackConfig = path.resolve(webpackConfig);
         this.webpackConfigIndex = webpackConfigIndex;
     }
@@ -25,6 +26,12 @@ class Resolver {
      * or null if the file could not be resolved.
      */
     resolveFile(importPath, source) {
+        const cacheKey = importPath + source;
+        const cachedResult = this.cache[cacheKey];
+        if (cachedResult !== undefined) {
+            return cachedResult;
+        }
+
         const result = resolver.resolve(
             importPath,
             source,
@@ -34,11 +41,11 @@ class Resolver {
             },
         );
 
-        if (!result.found) {
-            return null;
-        }
 
-        return result.path;
+        const resolvedPath = result.found ? result.path : null;
+        this.cache[cacheKey] = resolvedPath;
+
+        return resolvedPath;
     }
 }
 

@@ -4,7 +4,6 @@ const ospath = require('path');
 
 const Babylon = require('babylon');
 const types = require('babel-types');
-const resolver = require('eslint-import-resolver-webpack');
 
 const AST = require('./ast');
 const Resolver = require('./resolver');
