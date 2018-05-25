@@ -82,45 +82,80 @@ const visitor = (path, state) => {
             debug('IMPORTS', ast.importSpecifiers());
             debug('EXPORTS', ast.exportSpecifiers());
 
-            pointer = ast.importSpecifiers().find(imp => imp.name === name);
-
-            if (!pointer) {
-                // perhaps there was a re-export, check the export specifiers
-                pointer = ast.exportSpecifiers().find(exp => exp.exportedName === name);
-
-                if (pointer) {
-                    debug('FOUND IT!', pointer);
-
-                    // it was re-exported! find the matching local import
-                    pointer = ast.importSpecifiers().find(imp => imp.name === pointer.name);
-
-                    if (pointer) {
-                        path = pointer.path;
-                        name = pointer.importedName;
-
-                        debug('FOUND THE RE-EXPORT!', pointer);
-
-                        exportedSpecifier = pointer;
-                        continue;
-                    } else if (exportedSpecifier) {
-                        // no matching import, we're at the bottom of the chain
-                        debug('NO MORE IMPORTS, USE THE PREVIOUS RESULT');
-                        break;
-                    }
+            pointer = ast.exportSpecifiers().find(exp=> exp.exportedName === name);
+        
+            // Found the export, track to its original name
+            // It must be named-export, because we skiped default export
+            if(pointer){
+                debug('FOUND EXPORT!', pointer);
+                // If it's re-export like export {Foo} from './foo';
+                // Then there's a path
+                if(pointer.path){
+                    path = pointer.path;
+                    name = pointer.name;
+                    exportedSpecifier = pointer;
+                    continue;
                 }
+                // Must be syntax like export {Foo}; Then look for import
+                pointer = ast.importSpecifiers().find(imp => imp.name === pointer.name);
+                if (pointer) {
+                    path = pointer.path;
+                    name = pointer.importedName;
 
-                if (!pointer && !exportedSpecifier) {
-                    return;
-                } else if (exportedSpecifier) {
-                    break;
-                } else {
+                    debug('FOUND THE IMPORT!', pointer);
+
                     exportedSpecifier = pointer;
                     break;
                 }
+            }
+            if (!pointer && !exportedSpecifier) {
+                return;
+            } else if (exportedSpecifier) {
+                break;
             } else {
                 exportedSpecifier = pointer;
                 break;
             }
+  
+            // pointer = ast.importSpecifiers().find(imp => imp.name === name);
+
+            // if (!pointer) {
+            //     // perhaps there was a re-export, check the export specifiers
+            //     pointer = ast.exportSpecifiers().find(exp => exp.exportedName === name);
+
+            //     if (pointer) {
+            //         debug('FOUND IT!', pointer);
+
+            //         // it was re-exported! find the matching local import
+            //         pointer = ast.importSpecifiers().find(imp => imp.name === pointer.name);
+
+            //         if (pointer) {
+            //             path = pointer.path;
+            //             name = pointer.importedName;
+
+            //             debug('FOUND THE RE-EXPORT!', pointer);
+
+            //             exportedSpecifier = pointer;
+            //             continue;
+            //         } else if (exportedSpecifier) {
+            //             // no matching import, we're at the bottom of the chain
+            //             debug('NO MORE IMPORTS, USE THE PREVIOUS RESULT');
+            //             break;
+            //         }
+            //     }
+
+            //     if (!pointer && !exportedSpecifier) {
+            //         return;
+            //     } else if (exportedSpecifier) {
+            //         break;
+            //     } else {
+            //         exportedSpecifier = pointer;
+            //         break;
+            //     }
+            // } else {
+            //     exportedSpecifier = pointer;
+            //     break;
+            // }
         } while (path);
 
         debug('GOING WITH', exportedSpecifier);

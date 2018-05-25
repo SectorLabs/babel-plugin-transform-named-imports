@@ -1,0 +1,1 @@
+export {default as Foo2} from './foo2';
