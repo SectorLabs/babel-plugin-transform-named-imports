@@ -72,6 +72,16 @@ import * as testmodule from 'testmodule';
 "
 `;
 
+exports[`import export in single line 1`] = `
+"
+import { myInlineExport } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { myInlineFunc as myInlineExport } from './tests/testmodule/myOtherFunc.js';
+"
+`;
+
 exports[`multiple named imports 1`] = `
 "
 import { myFunc, myOtherFunc } from 'testmodule'

@@ -69,5 +69,9 @@ pluginTester({
         // leaves glob imports alone
         'glob import':
             `import * as testmodule from 'testmodule'`,
+
+        // make sure we can follow import/export in a single line
+        'import export in single line':
+            `import { myInlineExport } from 'testmodule'`,
     },
 });

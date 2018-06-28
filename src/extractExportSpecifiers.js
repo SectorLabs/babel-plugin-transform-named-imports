@@ -12,11 +12,13 @@ module.exports = (declarations, resolve) => {
 
     declarations.forEach(node => {
         const specifiers = node.specifiers || [];
+        const importPath = node.source ? resolve(node.source.value): null;
 
         specifiers.forEach(specifier => {
             exps.push({
                 type: getSimpleType(specifier.type),
                 name: specifier.local.name,
+                path: importPath,
                 exportedName: (specifier.exported || specifier.local).name,
             });
         });

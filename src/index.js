@@ -83,40 +83,41 @@ const visitor = (path, state) => {
             debug('EXPORTS', ast.exportSpecifiers());
 
             pointer = ast.importSpecifiers().find(imp => imp.name === name);
+            if (pointer) {
+                exportedSpecifier = pointer;
+                break;
+            }
 
-            if (!pointer) {
-                // perhaps there was a re-export, check the export specifiers
-                pointer = ast.exportSpecifiers().find(exp => exp.exportedName === name);
+            // perhaps there was a re-export, check the export specifiers
+            pointer = ast.exportSpecifiers().find(exp => exp.exportedName === name);
+            if (pointer) {
+                debug('FOUND IT!', pointer);
 
-                if (pointer) {
-                    debug('FOUND IT!', pointer);
-
-                    // it was re-exported! find the matching local import
-                    pointer = ast.importSpecifiers().find(imp => imp.name === pointer.name);
-
-                    if (pointer) {
-                        path = pointer.path;
-                        name = pointer.importedName;
-
-                        debug('FOUND THE RE-EXPORT!', pointer);
-
-                        exportedSpecifier = pointer;
-                        continue;
-                    } else if (exportedSpecifier) {
-                        // no matching import, we're at the bottom of the chain
-                        debug('NO MORE IMPORTS, USE THE PREVIOUS RESULT');
-                        break;
-                    }
-                }
-
-                if (!pointer && !exportedSpecifier) {
-                    return;
-                } else if (exportedSpecifier) {
-                    break;
-                } else {
+                // it could be that this export is also an import in the same line
+                if (pointer.path) {
+                    name = pointer.importedName;
+                    path = pointer.path;
                     exportedSpecifier = pointer;
-                    break;
+                    continue;
                 }
+
+                // it was re-exported! find the matching local import
+                pointer = ast.importSpecifiers().find(imp => imp.name === pointer.name);
+                if (pointer) {
+                    path = pointer.path;
+                    name = pointer.importedName;
+
+                    debug('FOUND THE RE-EXPORT!', pointer);
+
+                    exportedSpecifier = pointer;
+                    continue;
+                }
+            }
+
+            if (!pointer && !exportedSpecifier) {
+                return;
+            } else if (exportedSpecifier) {
+                break;
             } else {
                 exportedSpecifier = pointer;
                 break;
