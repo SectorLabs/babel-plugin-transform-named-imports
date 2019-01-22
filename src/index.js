@@ -149,11 +149,22 @@ const visitor = (path, state) => {
             break;
 
         case 'named':
-            transforms.push(types.importDeclaration(
-                [types.importSpecifier(
+            let importSpecifier;
+
+            if (exportedSpecifier.name === 'default') {
+                // A named default re-export.
+                importSpecifier = types.importDefaultSpecifier(
+                    types.identifier(specifier.name)
+                );
+            } else {
+                importSpecifier = types.importSpecifier(
                     types.identifier(specifier.name),
                     types.identifier(exportedSpecifier.name),
-                )],
+                );
+            }
+
+            transforms.push(types.importDeclaration(
+                [importSpecifier],
                 types.stringLiteral(makeImportPath(exportedSpecifier)),
             ));
             break;

@@ -72,6 +72,27 @@ import * as testmodule from 'testmodule';
 "
 `;
 
+exports[`import default reexport 1`] = `
+"
+import { myDefaultFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myDefaultFunc from './tests/testmodule/myFunc.js';
+"
+`;
+
+exports[`import default reexport with named reexport 1`] = `
+"
+import { myDefaultFunc, myReexportedFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myDefaultFunc from './tests/testmodule/myFunc.js';
+import { myReexportedFunc } from './tests/testmodule/myFunc.js';
+"
+`;
+
 exports[`import export in single line 1`] = `
 "
 import { myInlineExport } from 'testmodule'

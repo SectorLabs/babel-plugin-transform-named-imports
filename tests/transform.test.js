@@ -73,5 +73,13 @@ pluginTester({
         // make sure we can follow import/export in a single line
         'import export in single line':
             `import { myInlineExport } from 'testmodule'`,
+
+        //make sure we can follow default reexports
+        'import default reexport':
+            `import { myDefaultFunc } from 'testmodule'`,
+
+        // make sure we can follow default reexports, and named reexports on the same line
+        'import default reexport with named reexport':
+            `import { myDefaultFunc, myReexportedFunc } from 'testmodule'`
     },
 });
