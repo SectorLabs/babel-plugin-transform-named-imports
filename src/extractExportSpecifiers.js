@@ -1,9 +1,9 @@
 function getSimpleType(type) {
     switch (type) {
-    case 'ExportDefaultSpecifier':
-        return 'default';
-    default:
-        return 'named';
+        case 'ExportDefaultSpecifier':
+            return 'default';
+        default:
+            return 'named';
     }
 }
 
@@ -12,7 +12,7 @@ module.exports = (declarations, resolve) => {
 
     declarations.forEach(node => {
         const specifiers = node.specifiers || [];
-        const importPath = node.source ? resolve(node.source.value): null;
+        const importPath = node.source ? resolve(node.source.value) : null;
 
         specifiers.forEach(specifier => {
             exps.push({

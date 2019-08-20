@@ -23,10 +23,13 @@
   "devDependencies": {
     "babel-plugin-tester": "^7.0.0",
     "babylon-options": "^2.0.1",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write --config ./prettier.config.json '**/*(*.js|*.jsx)' --loglevel=warn",
+    "format:verify": "prettier -l --config ./prettier.config.json '**/*(*.js|*.jsx)'"
   },
   "keywords": [
     "babel",

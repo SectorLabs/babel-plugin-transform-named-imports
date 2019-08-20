@@ -1,11 +1,11 @@
 function getSimpleType(type) {
     switch (type) {
-    case 'ImportDefaultSpecifier':
-        return 'default';
-    case 'ImportNamespaceSpecifier':
-        return 'namespace';
-    default:
-        return 'named';
+        case 'ImportDefaultSpecifier':
+            return 'default';
+        case 'ImportNamespaceSpecifier':
+            return 'namespace';
+        default:
+            return 'named';
     }
 }
 

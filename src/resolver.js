@@ -8,13 +8,14 @@ const resolver = require('eslint-import-resolver-webpack');
 class Resolver {
     /**
      * Initializes a new instance of {@see Resolver}.
-     * @param webpackConfig Path to the webpack configuration file to use.
+     * @param webpackConfig Object containing a webpack configuration, or
+     *                      a list of webpack configurations.
      * @param webpackConfigIndex The index of the configuration to use in
      * case the specified configuration file is a multi-config file.
      */
     constructor(webpackConfig, webpackConfigIndex = 0) {
         this.cache = {};
-        this.webpackConfig = path.resolve(webpackConfig);
+        this.webpackConfig = webpackConfig;
         this.webpackConfigIndex = webpackConfigIndex;
     }
 
@@ -32,15 +33,10 @@ class Resolver {
             return cachedResult;
         }
 
-        const result = resolver.resolve(
-            importPath,
-            source,
-            {
-                config: this.webpackConfig,
-                'config-index': this.webpackConfigIndex,
-            },
-        );
-
+        const result = resolver.resolve(importPath, source, {
+            config: this.webpackConfig,
+            'config-index': this.webpackConfigIndex,
+        });
 
         const resolvedPath = result.found ? result.path : null;
         this.cache[cacheKey] = resolvedPath;

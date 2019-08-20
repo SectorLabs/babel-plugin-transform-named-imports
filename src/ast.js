@@ -83,8 +83,9 @@ class AST {
      * Gets a flat list of all the import specifiers in this file.
      */
     importSpecifiers() {
-        const declarations = this.ast.program.body
-            .filter(node => node.type === 'ImportDeclaration');
+        const declarations = this.ast.program.body.filter(
+            node => node.type === 'ImportDeclaration',
+        );
 
         return extractImportSpecifiers(declarations, this.resolve.bind(this));
     }
@@ -93,8 +94,10 @@ class AST {
      * Gets a flat list of all the export specifiers in this file.
      */
     exportSpecifiers() {
-        const declarations = this.ast.program.body
-            .filter(node => node.type === 'ExportDefaultDeclaration' || node.type === 'ExportNamedDeclaration');
+        const declarations = this.ast.program.body.filter(
+            node =>
+                node.type === 'ExportDefaultDeclaration' || node.type === 'ExportNamedDeclaration',
+        );
 
         return extractExportSpecifiers(declarations, this.resolve.bind(this));
     }

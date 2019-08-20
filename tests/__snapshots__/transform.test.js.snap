@@ -10,7 +10,67 @@ import myAliasFunc from \\"./tests/testmodule/myFunc.js\\";
 "
 `;
 
+exports[`transform-named-imports aliased named import: aliased named import 2`] = `
+"
+import { myFunc as myAliasFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myAliasFunc from \\"./tests/testmodule/myFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports aliased named import: aliased named import 3`] = `
+"
+import { myFunc as myAliasFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myAliasFunc from \\"./tests/testmodule/myFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports aliased named import: aliased named import 4`] = `
+"
+import { myFunc as myAliasFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myAliasFunc from \\"./tests/testmodule/myFunc.js\\";
+"
+`;
+
 exports[`transform-named-imports aliased namespace import: aliased namespace import 1`] = `
+"
+import { thangs } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as thangs from \\"./tests/testmodule/constants.js\\";
+"
+`;
+
+exports[`transform-named-imports aliased namespace import: aliased namespace import 2`] = `
+"
+import { thangs } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as thangs from \\"./tests/testmodule/constants.js\\";
+"
+`;
+
+exports[`transform-named-imports aliased namespace import: aliased namespace import 3`] = `
+"
+import { thangs } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as thangs from \\"./tests/testmodule/constants.js\\";
+"
+`;
+
+exports[`transform-named-imports aliased namespace import: aliased namespace import 4`] = `
 "
 import { thangs } from 'testmodule'
 
@@ -30,7 +90,67 @@ import React from './commonjsmodule';
 "
 `;
 
+exports[`transform-named-imports common js default import: common js default import 2`] = `
+"
+import React from './commonjsmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from './commonjsmodule';
+"
+`;
+
+exports[`transform-named-imports common js default import: common js default import 3`] = `
+"
+import React from './commonjsmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from './commonjsmodule';
+"
+`;
+
+exports[`transform-named-imports common js default import: common js default import 4`] = `
+"
+import React from './commonjsmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from './commonjsmodule';
+"
+`;
+
 exports[`transform-named-imports common js default with named import: common js default with named import 1`] = `
+"
+import React, { Component } from './commonjsmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React, { Component } from './commonjsmodule';
+"
+`;
+
+exports[`transform-named-imports common js default with named import: common js default with named import 2`] = `
+"
+import React, { Component } from './commonjsmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React, { Component } from './commonjsmodule';
+"
+`;
+
+exports[`transform-named-imports common js default with named import: common js default with named import 3`] = `
+"
+import React, { Component } from './commonjsmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React, { Component } from './commonjsmodule';
+"
+`;
+
+exports[`transform-named-imports common js default with named import: common js default with named import 4`] = `
 "
 import React, { Component } from './commonjsmodule'
 
@@ -52,7 +172,73 @@ import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
 "
 `;
 
+exports[`transform-named-imports default import with multiple named import: default import with multiple named import 2`] = `
+"
+import init, { myFunc, myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import init from \\"./tests/testmodule/index.js\\";
+import myFunc from \\"./tests/testmodule/myFunc.js\\";
+import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports default import with multiple named import: default import with multiple named import 3`] = `
+"
+import init, { myFunc, myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import init from \\"./tests/testmodule/index.js\\";
+import myFunc from \\"./tests/testmodule/myFunc.js\\";
+import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports default import with multiple named import: default import with multiple named import 4`] = `
+"
+import init, { myFunc, myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import init from \\"./tests/testmodule/index.js\\";
+import myFunc from \\"./tests/testmodule/myFunc.js\\";
+import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
 exports[`transform-named-imports default import: default import 1`] = `
+"
+import myFunc from 'testmodule/myFunc'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from 'testmodule/myFunc';
+"
+`;
+
+exports[`transform-named-imports default import: default import 2`] = `
+"
+import myFunc from 'testmodule/myFunc'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from 'testmodule/myFunc';
+"
+`;
+
+exports[`transform-named-imports default import: default import 3`] = `
+"
+import myFunc from 'testmodule/myFunc'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from 'testmodule/myFunc';
+"
+`;
+
+exports[`transform-named-imports default import: default import 4`] = `
 "
 import myFunc from 'testmodule/myFunc'
 
@@ -72,7 +258,67 @@ import * as testmodule from 'testmodule';
 "
 `;
 
+exports[`transform-named-imports glob import: glob import 2`] = `
+"
+import * as testmodule from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as testmodule from 'testmodule';
+"
+`;
+
+exports[`transform-named-imports glob import: glob import 3`] = `
+"
+import * as testmodule from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as testmodule from 'testmodule';
+"
+`;
+
+exports[`transform-named-imports glob import: glob import 4`] = `
+"
+import * as testmodule from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import * as testmodule from 'testmodule';
+"
+`;
+
 exports[`transform-named-imports import export in single line: import export in single line 1`] = `
+"
+import { myInlineExport } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { myInlineFunc as myInlineExport } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports import export in single line: import export in single line 2`] = `
+"
+import { myInlineExport } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { myInlineFunc as myInlineExport } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports import export in single line: import export in single line 3`] = `
+"
+import { myInlineExport } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { myInlineFunc as myInlineExport } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports import export in single line: import export in single line 4`] = `
 "
 import { myInlineExport } from 'testmodule'
 
@@ -93,7 +339,70 @@ import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
 "
 `;
 
+exports[`transform-named-imports multiple named imports: multiple named imports 2`] = `
+"
+import { myFunc, myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from \\"./tests/testmodule/myFunc.js\\";
+import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports multiple named imports: multiple named imports 3`] = `
+"
+import { myFunc, myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from \\"./tests/testmodule/myFunc.js\\";
+import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports multiple named imports: multiple named imports 4`] = `
+"
+import { myFunc, myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from \\"./tests/testmodule/myFunc.js\\";
+import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
 exports[`transform-named-imports nested named import: nested named import 1`] = `
+"
+import { myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports nested named import: nested named import 2`] = `
+"
+import { myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports nested named import: nested named import 3`] = `
+"
+import { myOtherFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { myOtherFunc } from \\"./tests/testmodule/myOtherFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports nested named import: nested named import 4`] = `
 "
 import { myOtherFunc } from 'testmodule'
 
@@ -113,6 +422,36 @@ import myFunc from \\"./tests/testmodule/myFunc.js\\";
 "
 `;
 
+exports[`transform-named-imports single named import: single named import 2`] = `
+"
+import { myFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from \\"./tests/testmodule/myFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports single named import: single named import 3`] = `
+"
+import { myFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from \\"./tests/testmodule/myFunc.js\\";
+"
+`;
+
+exports[`transform-named-imports single named import: single named import 4`] = `
+"
+import { myFunc } from 'testmodule'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import myFunc from \\"./tests/testmodule/myFunc.js\\";
+"
+`;
+
 exports[`transform-named-imports unresolved default import with named import: unresolved default import with named import 1`] = `
 "
 import React, { Component } from 'reacty'
@@ -123,7 +462,67 @@ import React, { Component } from 'reacty';
 "
 `;
 
+exports[`transform-named-imports unresolved default import with named import: unresolved default import with named import 2`] = `
+"
+import React, { Component } from 'reacty'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React, { Component } from 'reacty';
+"
+`;
+
+exports[`transform-named-imports unresolved default import with named import: unresolved default import with named import 3`] = `
+"
+import React, { Component } from 'reacty'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React, { Component } from 'reacty';
+"
+`;
+
+exports[`transform-named-imports unresolved default import with named import: unresolved default import with named import 4`] = `
+"
+import React, { Component } from 'reacty'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React, { Component } from 'reacty';
+"
+`;
+
 exports[`transform-named-imports unresolved default import: unresolved default import 1`] = `
+"
+import React from 'reacty'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'reacty';
+"
+`;
+
+exports[`transform-named-imports unresolved default import: unresolved default import 2`] = `
+"
+import React from 'reacty'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'reacty';
+"
+`;
+
+exports[`transform-named-imports unresolved default import: unresolved default import 3`] = `
+"
+import React from 'reacty'
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import React from 'reacty';
+"
+`;
+
+exports[`transform-named-imports unresolved default import: unresolved default import 4`] = `
 "
 import React from 'reacty'
 
