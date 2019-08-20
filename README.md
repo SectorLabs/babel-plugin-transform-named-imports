@@ -41,6 +41,20 @@ This plugin attempts to rewrite your imports to always import from the file in w
             }
         ]
 
+    Alternatively, pass a Webpack configuration object instead:
+
+        "plugins": [
+            "transform-named-imports" {
+                "webpackConfig": {
+                    "resolve": {
+                        "alias": {
+                            "~": "./test"
+                        }
+                    }
+                }
+            }
+        ]
+
 ## Workings
 1. Given a file that looks like this:
 
